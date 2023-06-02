@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import PhotosUI
 
 class RegisterViewController: UIViewController {
     
@@ -21,6 +22,9 @@ class RegisterViewController: UIViewController {
         imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleAspectFit
+        imageView.layer.masksToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         return imageView
     }()
     
@@ -139,6 +143,9 @@ class RegisterViewController: UIViewController {
                                  y: 20,
                                  width: size,
                                  height: size)
+        
+        imageView.layer.cornerRadius = imageView.width / 2
+        
         firstNameField.frame = CGRect(x: 30,
                                       y: imageView.bottom + 10,
                                       width: scrollView.width - 60,
@@ -163,7 +170,7 @@ class RegisterViewController: UIViewController {
     
     // Methods
     @objc private func didTapChangeProfilePic() {
-        print("Change picture called")
+        presentPhotoActionSheet()
     }
     
     @objc private func registerButtonTapped() {
@@ -199,7 +206,7 @@ class RegisterViewController: UIViewController {
 
 }
 
-
+//MARK: - UITextFieldDelegate
 extension RegisterViewController: UITextFieldDelegate {
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -216,3 +223,71 @@ extension RegisterViewController: UITextFieldDelegate {
     }
     
 }
+
+//MARK: - UIImagePickerControllerDelegate & UINavigationControllerDelegate
+extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate, PHPickerViewControllerDelegate {
+    
+    func presentPhotoActionSheet() {
+        let actionSheet = UIAlertController(title: "Profile Picture",
+                                            message: "How would you like to select a picture?",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Canel",
+                                            style: .cancel,
+                                            handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Take Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentCamera()
+        }))
+        actionSheet.addAction(UIAlertAction(title: "Chose Photo",
+                                            style: .default,
+                                            handler: { [weak self] _ in
+            self?.presentPhotoPicker()
+        }))
+        present(actionSheet, animated: true)
+    }
+    
+    func presentCamera() {
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        present(vc, animated: true)
+    }
+    
+    func presentPhotoPicker() {
+        var configuration: PHPickerConfiguration = PHPickerConfiguration()
+        configuration.filter = PHPickerFilter.images
+        configuration.selectionLimit = 1
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        self.present(picker, animated: true)
+    }
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        //
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
+    
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        
+        dismiss(animated: true, completion: nil)
+        
+        for item in results {
+            item.itemProvider.loadObject(ofClass: UIImage.self) { image, error in
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        self.imageView.image = image
+                    }
+                }
+            }
+        }
+    }
+    
+}
+
+
