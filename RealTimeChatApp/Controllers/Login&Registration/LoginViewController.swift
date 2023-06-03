@@ -131,13 +131,12 @@ class LoginViewController: UIViewController {
             
             guard let self = self else { return }
             
-            guard let result = authResult, error == nil else {
+            guard authResult != nil, error == nil else {
                 print("Failed to log in user with email: \(email)")
                 return
             }
             
-            let user = result.user
-            print("Logged In User: \(user)")
+            self.navigationController?.dismiss(animated: true, completion: nil)
         })
     }
     

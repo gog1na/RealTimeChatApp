@@ -100,11 +100,11 @@ class RegisterViewController: UIViewController {
         button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
         return button
     }()
-
+    
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         title = "Register"
         view.backgroundColor = .white
         
@@ -152,17 +152,17 @@ class RegisterViewController: UIViewController {
                                       width: scrollView.width - 60,
                                       height: 52)
         lastNameField.frame = CGRect(x: 30,
-                                      y: firstNameField.bottom + 10,
-                                      width: scrollView.width - 60,
-                                      height: 52)
+                                     y: firstNameField.bottom + 10,
+                                     width: scrollView.width - 60,
+                                     height: 52)
         emailField.frame = CGRect(x: 30,
-                                      y: lastNameField.bottom + 10,
-                                      width: scrollView.width - 60,
-                                      height: 52)
+                                  y: lastNameField.bottom + 10,
+                                  width: scrollView.width - 60,
+                                  height: 52)
         passwordField.frame = CGRect(x: 30,
-                                      y: emailField.bottom + 10,
-                                      width: scrollView.width - 60,
-                                      height: 52)
+                                     y: emailField.bottom + 10,
+                                     width: scrollView.width - 60,
+                                     height: 52)
         registerButton.frame = CGRect(x: 30,
                                       y: passwordField.bottom + 10,
                                       width: scrollView.width - 60,
@@ -193,29 +193,43 @@ class RegisterViewController: UIViewController {
             return
         }
         // Firebase register
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { [weak self] authResult, error in
+        DatabaseManager.shared.userExists(with: email, completion: { [weak self] exists in
             
             guard let self = self else { return }
             
-            guard let result = authResult, error == nil else {
-                print("Error cureating user")
+            guard !exists else {
+                // user already exists
+                self.alertUserLoginError(message: "Looks like a user account for that email address already exists.")
                 return
             }
             
-            let user = result.user
-            print("Created User: \(user)")
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: { authResult, error in
+                
+                guard authResult != nil, error == nil else {
+                    print("Error cureating user")
+                    return
+                }
+                
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
+                                                                    lastName: lastName,
+                                                                    emailAddress: email))
+                
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            })
+            
         })
+        
     }
     
-    func alertUserLoginError() {
+    func alertUserLoginError(message: String = "Please enter all information to create a new account.") {
         let alert = UIAlertController(title: "Woops",
-                                      message: "Please enter all information to create a new account.",
+                                      message: message,
                                       preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss",
                                       style: .cancel, handler: nil))
         present(alert, animated: true)
     }
-
+    
 }
 
 //MARK: - UITextFieldDelegate

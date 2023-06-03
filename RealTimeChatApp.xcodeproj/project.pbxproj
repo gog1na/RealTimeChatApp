@@ -11,6 +11,7 @@
 		2579083C2A2BCE0200FD1D57 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2579083B2A2BCE0200FD1D57 /* FirebaseDatabase */; };
 		2579083E2A2BCE0200FD1D57 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2579083D2A2BCE0200FD1D57 /* FirebaseFirestore */; };
 		257908402A2BCE4400FD1D57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2579083F2A2BCE4300FD1D57 /* GoogleService-Info.plist */; };
+		2585D0B32A2BE797002D2955 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2585D0B22A2BE797002D2955 /* DatabaseManager.swift */; };
 		25B7407F2A29D0BB00851E4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7407E2A29D0BB00851E4E /* AppDelegate.swift */; };
 		25B740812A29D0BB00851E4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B740802A29D0BB00851E4E /* SceneDelegate.swift */; };
 		25B740832A29D0BB00851E4E /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B740822A29D0BB00851E4E /* ConversationsViewController.swift */; };
@@ -28,6 +29,7 @@
 
 /* Begin PBXFileReference section */
 		2579083F2A2BCE4300FD1D57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		2585D0B22A2BE797002D2955 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		25B7407B2A29D0BB00851E4E /* RealTimeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealTimeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B7407E2A29D0BB00851E4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B740802A29D0BB00851E4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				25B7407E2A29D0BB00851E4E /* AppDelegate.swift */,
 				25B740802A29D0BB00851E4E /* SceneDelegate.swift */,
 				25B740A62A29E52800851E4E /* Extensions.swift */,
+				2585D0B22A2BE797002D2955 /* DatabaseManager.swift */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -234,6 +237,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25B740992A29D3C600851E4E /* LoginViewController.swift in Sources */,
+				2585D0B32A2BE797002D2955 /* DatabaseManager.swift in Sources */,
 				25B7409B2A29D3D200851E4E /* RegisterViewController.swift in Sources */,
 				25B740A22A29D41F00851E4E /* NewConversationViewController.swift in Sources */,
 				25B740832A29D0BB00851E4E /* ConversationsViewController.swift in Sources */,
