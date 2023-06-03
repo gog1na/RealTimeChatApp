@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2579083A2A2BCE0200FD1D57 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 257908392A2BCE0200FD1D57 /* FirebaseAuth */; };
+		2579083C2A2BCE0200FD1D57 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2579083B2A2BCE0200FD1D57 /* FirebaseDatabase */; };
+		2579083E2A2BCE0200FD1D57 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2579083D2A2BCE0200FD1D57 /* FirebaseFirestore */; };
+		257908402A2BCE4400FD1D57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2579083F2A2BCE4300FD1D57 /* GoogleService-Info.plist */; };
 		25B7407F2A29D0BB00851E4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7407E2A29D0BB00851E4E /* AppDelegate.swift */; };
 		25B740812A29D0BB00851E4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B740802A29D0BB00851E4E /* SceneDelegate.swift */; };
 		25B740832A29D0BB00851E4E /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B740822A29D0BB00851E4E /* ConversationsViewController.swift */; };
@@ -23,6 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2579083F2A2BCE4300FD1D57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		25B7407B2A29D0BB00851E4E /* RealTimeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealTimeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B7407E2A29D0BB00851E4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B740802A29D0BB00851E4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -45,6 +50,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2579083C2A2BCE0200FD1D57 /* FirebaseDatabase in Frameworks */,
+				2579083A2A2BCE0200FD1D57 /* FirebaseAuth in Frameworks */,
+				2579083E2A2BCE0200FD1D57 /* FirebaseFirestore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -76,6 +84,7 @@
 				25B740932A29D2D400851E4E /* Views */,
 				25B740922A29D2CB00851E4E /* Controllers */,
 				25B7408C2A29D0BF00851E4E /* Info.plist */,
+				2579083F2A2BCE4300FD1D57 /* GoogleService-Info.plist */,
 			);
 			path = RealTimeChatApp;
 			sourceTree = "<group>";
@@ -160,6 +169,11 @@
 			dependencies = (
 			);
 			name = RealTimeChatApp;
+			packageProductDependencies = (
+				257908392A2BCE0200FD1D57 /* FirebaseAuth */,
+				2579083B2A2BCE0200FD1D57 /* FirebaseDatabase */,
+				2579083D2A2BCE0200FD1D57 /* FirebaseFirestore */,
+			);
 			productName = RealTimeChatApp;
 			productReference = 25B7407B2A29D0BB00851E4E /* RealTimeChatApp.app */;
 			productType = "com.apple.product-type.application";
@@ -188,6 +202,9 @@
 				Base,
 			);
 			mainGroup = 25B740722A29D0BB00851E4E;
+			packageReferences = (
+				257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 25B7407C2A29D0BB00851E4E /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -203,6 +220,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25B7408B2A29D0BF00851E4E /* LaunchScreen.storyboard in Resources */,
+				257908402A2BCE4400FD1D57 /* GoogleService-Info.plist in Resources */,
 				25B740882A29D0BF00851E4E /* Assets.xcassets in Resources */,
 				25B740862A29D0BB00851E4E /* Main.storyboard in Resources */,
 			);
@@ -442,6 +460,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		257908392A2BCE0200FD1D57 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		2579083B2A2BCE0200FD1D57 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		2579083D2A2BCE0200FD1D57 /* FirebaseFirestore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestore;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 25B740732A29D0BB00851E4E /* Project object */;
 }
