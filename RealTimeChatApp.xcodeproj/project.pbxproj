@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2511FAE92A2CC9D400B3A7A2 /* FacebookCore in Frameworks */ = {isa = PBXBuildFile; productRef = 2511FAE82A2CC9D400B3A7A2 /* FacebookCore */; };
+		2511FAEB2A2CC9D400B3A7A2 /* FacebookLogin in Frameworks */ = {isa = PBXBuildFile; productRef = 2511FAEA2A2CC9D400B3A7A2 /* FacebookLogin */; };
 		2579083A2A2BCE0200FD1D57 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 257908392A2BCE0200FD1D57 /* FirebaseAuth */; };
 		2579083C2A2BCE0200FD1D57 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 2579083B2A2BCE0200FD1D57 /* FirebaseDatabase */; };
 		2579083E2A2BCE0200FD1D57 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 2579083D2A2BCE0200FD1D57 /* FirebaseFirestore */; };
@@ -52,9 +54,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2511FAEB2A2CC9D400B3A7A2 /* FacebookLogin in Frameworks */,
 				2579083C2A2BCE0200FD1D57 /* FirebaseDatabase in Frameworks */,
 				2579083A2A2BCE0200FD1D57 /* FirebaseAuth in Frameworks */,
 				2579083E2A2BCE0200FD1D57 /* FirebaseFirestore in Frameworks */,
+				2511FAE92A2CC9D400B3A7A2 /* FacebookCore in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -176,6 +180,8 @@
 				257908392A2BCE0200FD1D57 /* FirebaseAuth */,
 				2579083B2A2BCE0200FD1D57 /* FirebaseDatabase */,
 				2579083D2A2BCE0200FD1D57 /* FirebaseFirestore */,
+				2511FAE82A2CC9D400B3A7A2 /* FacebookCore */,
+				2511FAEA2A2CC9D400B3A7A2 /* FacebookLogin */,
 			);
 			productName = RealTimeChatApp;
 			productReference = 25B7407B2A29D0BB00851E4E /* RealTimeChatApp.app */;
@@ -207,6 +213,7 @@
 			mainGroup = 25B740722A29D0BB00851E4E;
 			packageReferences = (
 				257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				2511FAE72A2CC9D300B3A7A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */,
 			);
 			productRefGroup = 25B7407C2A29D0BB00851E4E /* Products */;
 			projectDirPath = "";
@@ -395,6 +402,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RealTimeChatApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo  for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -423,6 +432,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = RealTimeChatApp/Info.plist;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please allow access to take a profile picture";
+				INFOPLIST_KEY_NSPhotoLibraryAddUsageDescription = "Please allow access to select a photo  for your profile";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -466,6 +477,14 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
+		2511FAE72A2CC9D300B3A7A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/facebook/facebook-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 9.0.0;
+			};
+		};
 		257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
@@ -477,6 +496,16 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		2511FAE82A2CC9D400B3A7A2 /* FacebookCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2511FAE72A2CC9D300B3A7A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookCore;
+		};
+		2511FAEA2A2CC9D400B3A7A2 /* FacebookLogin */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 2511FAE72A2CC9D300B3A7A2 /* XCRemoteSwiftPackageReference "facebook-ios-sdk" */;
+			productName = FacebookLogin;
+		};
 		257908392A2BCE0200FD1D57 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 257908382A2BCE0200FD1D57 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
