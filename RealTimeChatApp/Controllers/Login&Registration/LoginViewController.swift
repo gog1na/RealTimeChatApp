@@ -7,7 +7,9 @@
 
 import UIKit
 import FirebaseAuth
+import FirebaseCore
 import FBSDKLoginKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
     
@@ -74,9 +76,12 @@ class LoginViewController: UIViewController {
         return button
     }()
     
+    private let googleLogInButton = GIDSignInButton()
+    
     // Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         view.backgroundColor = .white
         title = "Log In"
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
@@ -97,6 +102,7 @@ class LoginViewController: UIViewController {
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
         scrollView.addSubview(facebookLoginButton)
+        scrollView.addSubview(googleLogInButton)
     }
     
     override func viewDidLayoutSubviews() {
@@ -125,6 +131,60 @@ class LoginViewController: UIViewController {
                                            y: loginButton.bottom + 10,
                                            width: scrollView.width - 60,
                                            height: 52)
+        googleLogInButton.frame = CGRect(x: 30,
+                                         y: facebookLoginButton.bottom + 10,
+                                         width: scrollView.width - 60,
+                                         height: 52)
+    }
+    
+    //MARK: - Login With Google Email
+    func loginWithGoogle() {
+        guard let clientID = FirebaseApp.app()?.options.clientID else { return }
+        
+        // Create Google Sign In configuration object.
+        let config = GIDConfiguration(clientID: clientID)
+        GIDSignIn.sharedInstance.configuration = config
+        
+        // Start the sign in flow!
+        GIDSignIn.sharedInstance.signIn(withPresenting: self) { [weak self] result, error in
+            guard let self = self else { return }
+            
+            guard error == nil else {
+                if let error = error {
+                    print("There is an error signing the user in ==> \(error.localizedDescription)")
+                }
+                return
+            }
+            
+            guard let user = result?.user,
+                  let idToken = user.idToken?.tokenString else { return }
+            
+            let credential = GoogleAuthProvider.credential(withIDToken: idToken,
+                                                           accessToken: user.accessToken.tokenString)
+            
+            guard let email = user.profile?.email,
+                  let firstName = user.profile?.givenName,
+                  let lastName = user.profile?.familyName else { return }
+            
+            Auth.auth().signIn(with: credential) { authResult, error in
+                guard authResult != nil, error == nil else {
+                    if let error = error {
+                        print("Error - \(error)")
+                    }
+                    return
+                }
+                
+                DatabaseManager.shared.userExists(with: email, completion: { exists in
+                    if !exists {
+                        DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName,
+                                                                            lastName: lastName,
+                                                                            emailAddress: email))
+                    }
+                })
+                self.navigationController?.dismiss(animated: true, completion: nil)
+            }
+        }
+        
     }
     
     // Methods
