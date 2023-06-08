@@ -10,10 +10,13 @@ import FirebaseAuth
 import FirebaseCore
 import FBSDKLoginKit
 import GoogleSignIn
+import JGProgressHUD
 
 class LoginViewController: UIViewController {
     
-    // Properties
+    //MARK: - Properties
+    private let spinner = JGProgressHUD(style: .dark)
+    
     private let scrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.clipsToBounds = true
@@ -78,7 +81,7 @@ class LoginViewController: UIViewController {
     
     private let googleLogInButton = GIDSignInButton()
     
-    // Lifecycle
+    //MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -199,10 +202,16 @@ class LoginViewController: UIViewController {
             alertUserLoginError()
             return
         }
+        
+        spinner.show(in: view)
+        
         // Firebase log in
         FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: { [weak self] authResult, error in
-            
             guard let self = self else { return }
+            
+            DispatchQueue.main.async {
+                self.spinner.dismiss()
+            }
             
             guard authResult != nil, error == nil else {
                 print("Failed to log in user with email: \(email)")
