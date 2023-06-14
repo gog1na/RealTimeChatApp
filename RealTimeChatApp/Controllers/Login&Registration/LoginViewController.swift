@@ -199,7 +199,7 @@ class LoginViewController: UIViewController {
                                         StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName, completion: { result in
                                             switch result {
                                             case .success(let downloadUrl):
-                                                UserDefaults.standard.setValue(downloadUrl, forKey: "profile_picture_url")
+                                                UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
                                                 print(downloadUrl)
                                             case .failure(let error):
                                                 print("Storage manager error: \(error)")
@@ -344,7 +344,7 @@ extension LoginViewController: LoginButtonDelegate {
                                 StorageManager.shared.uploadProfilePicture(with: data, fileName: fileName, completion: { result in
                                     switch result {
                                     case .success(let downloadUrl):
-                                        UserDefaults.standard.setValue(downloadUrl, forKey: "profile_picture_url")
+                                        UserDefaults.standard.set(downloadUrl, forKey: "profile_picture_url")
                                         print(downloadUrl)
                                     case .failure(let error):
                                         print("Storage manager error: \(error)")
