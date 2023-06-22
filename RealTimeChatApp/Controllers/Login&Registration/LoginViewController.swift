@@ -169,6 +169,8 @@ class LoginViewController: UIViewController {
                   let firstName = user.profile?.givenName,
                   let lastName = user.profile?.familyName else { return }
             
+            UserDefaults.standard.set(email, forKey: "email")
+            
             Auth.auth().signIn(with: credential) { authResult, error in
                 guard authResult != nil, error == nil else {
                     if let error = error {
@@ -217,7 +219,7 @@ class LoginViewController: UIViewController {
         
     }
     
-    // Methods
+    //MARK: - Firebase Log In
     @objc private func loginButtonTapped() {
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
@@ -240,11 +242,16 @@ class LoginViewController: UIViewController {
                 self.spinner.dismiss()
             }
             
-            guard authResult != nil, error == nil else {
+            guard let result = authResult, error == nil else {
                 print("Failed to log in user with email: \(email)")
                 return
             }
             
+            let user = result.user
+            
+            UserDefaults.standard.set(email, forKey: "email")
+            
+            print("Logged in User: \(user)")
             self.navigationController?.dismiss(animated: true, completion: nil)
         })
     }
@@ -317,6 +324,8 @@ extension LoginViewController: LoginButtonDelegate {
                 print("Failed to get email and name from facebook result")
                 return
             }
+            
+            UserDefaults.standard.set(email, forKey: "email")
             
             DatabaseManager.shared.userExists(with: email, completion: { exists in
                 if !exists {
