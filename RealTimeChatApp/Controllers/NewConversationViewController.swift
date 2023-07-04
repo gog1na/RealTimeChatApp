@@ -10,6 +10,8 @@ import JGProgressHUD
 
 class NewConversationViewController: UIViewController {
     
+    public var completion: (([String: String]) -> (Void))?
+    
     private let spinner = JGProgressHUD(style: .dark)
     
     private var users = [[String: String]]()
@@ -59,6 +61,7 @@ class NewConversationViewController: UIViewController {
         searchBar.becomeFirstResponder()
     }
     
+    // viewDidLayoutSubviews
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         tableView.frame = view.bounds
@@ -84,14 +87,21 @@ extension NewConversationViewController: UITableViewDelegate, UITableViewDataSou
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
-        cell.textLabel?.text = results[indexPath.row]["name"]
+        //cell.textLabel?.text = results[indexPath.row]["name"] -> deprecated
+        var content = cell.defaultContentConfiguration()
+        content.text = results[indexPath.row]["name"]
+        cell.contentConfiguration = content
         return cell
     }
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         // start conversation
+        let targetUserData = results[indexPath.row]
         
+        dismiss(animated: true, completion: { [weak self] in
+            self?.completion?(targetUserData)
+        })
     }
 }
 
