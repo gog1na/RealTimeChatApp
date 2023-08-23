@@ -12,6 +12,7 @@
 		2528D07F2A2E68C9003CA070 /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 2528D07E2A2E68C9003CA070 /* GoogleSignIn */; };
 		2528D0812A2E68C9003CA070 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 2528D0802A2E68C9003CA070 /* GoogleSignInSwift */; };
 		257908402A2BCE4400FD1D57 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 2579083F2A2BCE4300FD1D57 /* GoogleService-Info.plist */; };
+		257DC6F02A96128300E79713 /* NewConversationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 257DC6EF2A96128300E79713 /* NewConversationCell.swift */; };
 		2585D0B32A2BE797002D2955 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2585D0B22A2BE797002D2955 /* DatabaseManager.swift */; };
 		258CB7E22A31B665003A5068 /* MessageKit in Frameworks */ = {isa = PBXBuildFile; productRef = 258CB7E12A31B665003A5068 /* MessageKit */; };
 		258CB7E52A31B759003A5068 /* JGProgressHUD in Frameworks */ = {isa = PBXBuildFile; productRef = 258CB7E42A31B759003A5068 /* JGProgressHUD */; };
@@ -43,6 +44,7 @@
 
 /* Begin PBXFileReference section */
 		2579083F2A2BCE4300FD1D57 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		257DC6EF2A96128300E79713 /* NewConversationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationCell.swift; sourceTree = "<group>"; };
 		2585D0B22A2BE797002D2955 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		258CB7F02A31C498003A5068 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		258E5A092A5BFB61006B83A2 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
@@ -139,6 +141,7 @@
 				25B740972A29D32C00851E4E /* Storyboards */,
 				25B740872A29D0BF00851E4E /* Assets.xcassets */,
 				258E5A092A5BFB61006B83A2 /* ConversationTableViewCell.swift */,
+				257DC6EF2A96128300E79713 /* NewConversationCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -285,6 +288,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				25B740992A29D3C600851E4E /* LoginViewController.swift in Sources */,
+				257DC6F02A96128300E79713 /* NewConversationCell.swift in Sources */,
 				2585D0B32A2BE797002D2955 /* DatabaseManager.swift in Sources */,
 				25B7409B2A29D3D200851E4E /* RegisterViewController.swift in Sources */,
 				25B740A22A29D41F00851E4E /* NewConversationViewController.swift in Sources */,
