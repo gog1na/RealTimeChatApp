@@ -27,6 +27,7 @@
 		25AFFBBE2A335B7C00330E72 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 25AFFBBD2A335B7C00330E72 /* FirebaseDatabase */; };
 		25AFFBC02A335B7C00330E72 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 25AFFBBF2A335B7C00330E72 /* FirebaseFirestore */; };
 		25AFFBC22A335B7C00330E72 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 25AFFBC12A335B7C00330E72 /* FirebaseStorage */; };
+		25B375002ACEC99300E93F37 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B374FF2ACEC99300E93F37 /* LocationPickerViewController.swift */; };
 		25B7407F2A29D0BB00851E4E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B7407E2A29D0BB00851E4E /* AppDelegate.swift */; };
 		25B740812A29D0BB00851E4E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B740802A29D0BB00851E4E /* SceneDelegate.swift */; };
 		25B740832A29D0BB00851E4E /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 25B740822A29D0BB00851E4E /* ConversationsViewController.swift */; };
@@ -49,6 +50,7 @@
 		258CB7F02A31C498003A5068 /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		258E5A092A5BFB61006B83A2 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		25A1841E2A35F30A009AD809 /* StorageManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageManager.swift; sourceTree = "<group>"; };
+		25B374FF2ACEC99300E93F37 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		25B7407B2A29D0BB00851E4E /* RealTimeChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RealTimeChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		25B7407E2A29D0BB00851E4E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		25B740802A29D0BB00851E4E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -131,6 +133,7 @@
 				25B740A12A29D41F00851E4E /* NewConversationViewController.swift */,
 				25B740A32A29D43900851E4E /* ProfileViewController.swift */,
 				258CB7F02A31C498003A5068 /* ChatViewController.swift */,
+				25B374FF2ACEC99300E93F37 /* LocationPickerViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -302,6 +305,7 @@
 				258CB7F12A31C498003A5068 /* ChatViewController.swift in Sources */,
 				25B7409E2A29D3F700851E4E /* PhotoViewerViewController.swift in Sources */,
 				25A1841F2A35F30A009AD809 /* StorageManager.swift in Sources */,
+				25B375002ACEC99300E93F37 /* LocationPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
