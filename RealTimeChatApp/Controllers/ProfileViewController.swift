@@ -175,7 +175,7 @@ class ProfileTableViewCell: UITableViewCell {
         switch viewModel.viewModelType {
         case .info:
             content.textProperties.alignment = .natural
-            self.selectionStyle = .none
+            selectionStyle = .none
         case .logout:
             content.textProperties.alignment = .center
             content.textProperties.color = .red

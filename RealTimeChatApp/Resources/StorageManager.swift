@@ -19,7 +19,9 @@ final class StorageManager {
     /// Upload picture to firebase storage and returns completion with url string to download
     public func uploadProfilePicture(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
         
-        storage.child("images/\(fileName)").putData(data, metadata: nil, completion: { metadata, error in
+        storage.child("images/\(fileName)").putData(data, metadata: nil, completion: { [weak self] metadata, error in
+            
+            guard let self = self else { return }
             guard error == nil else {
                 // failed
                 print("failed to upload data to firebase for picture")
@@ -45,7 +47,9 @@ final class StorageManager {
     /// Upload image that will be sent in a conversation message
     public func uploadMessagePhoto(with data: Data, fileName: String, completion: @escaping UploadPictureCompletion) {
         
-        storage.child("message_images/\(fileName)").putData(data, metadata: nil, completion: { metadata, error in
+        storage.child("message_images/\(fileName)").putData(data, metadata: nil, completion: { [weak self] metadata, error in
+            
+            guard let self = self else { return }
             guard error == nil else {
                 print("failed to upload data to firebase for picture")
                 completion(.failure(StorageErrors.failedToUpload))
